@@ -40,7 +40,7 @@ export function BookIndex() {
     setSelectedBook(book)
   }
 
-  function onSetFilter() {
+  function onSetFilter(filterBy) {
     console.log('filterBy ', filterBy)
     setFilterBy({ ...filterBy })
   }
