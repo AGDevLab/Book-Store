@@ -17,8 +17,8 @@ export function BookDetails({ bookId, onBack }) {
         <h1>Book Title: {book.title}</h1>
         <h2>Book Authors: {book.authors}</h2>
         <img src={book.thumbnail} alt='' />
-        <h4>Language: {book.language}</h4>
-        <h4>pagecount: {book.pageCount}</h4>
+        <h5>Language: {book.language}</h5>
+        <h5>pagecount: {book.pageCount}</h5>
         <p>Book Description: {book.description}</p>
       </section>
       <button onClick={onBack}>back</button>

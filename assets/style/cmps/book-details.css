@@ -1,0 +1,29 @@
+.book-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.book-details h1 {
+  color: var(--clr1);
+  font-size: 3em;
+}
+
+.book-details h2 {
+  color: var(--clr1);
+  font-size: 2em;
+}
+
+.book-details h5 {
+  color: var(--clr2);
+  font-size: 1.5em;
+}
+.book-details img {
+  max-width: 400px;
+  display: block;
+  margin: auto;
+}
+
+.book-details p {
+  color: var(--clr1);
+  font-size: 1.2em;
+}
