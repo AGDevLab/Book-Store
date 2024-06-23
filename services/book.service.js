@@ -60,7 +60,7 @@ const gBooks = [
 ]
 
 const BOOK_KEY = 'bookDB'
-var gFilterBy = { txt: '', minSpeed: 0 }
+var gFilterBy = { title: '', amount: 0, authors: '' }
 _createBooks()
 
 export const bookService = {
@@ -72,17 +72,23 @@ export const bookService = {
   getNextCarId: getNextBookId,
   getFilterBy,
   setFilterBy,
+  getDefaultFilter,
 }
 
-function query(filterBy = {}) {
+function query(filterBy) {
   return storageService.query(BOOK_KEY).then((books) => {
-    if (gFilterBy.txt) {
-      const regex = new RegExp(gFilterBy.txt, 'i')
-      books = books.filter((book) => regex.test(book.vendor))
+    if (filterBy.title) {
+      const regex = new RegExp(filterBy.title, 'i')
+      books = books.filter((book) => regex.test(book.title))
     }
-    if (gFilterBy.minSpeed) {
-      books = books.filter((car) => car.maxSpeed >= gFilterBy.minSpeed)
+    if (filterBy.amount) {
+      books = books.filter((book) => book.listPrice.amount >= filterBy.amount)
     }
+    if (filterBy.authors) {
+      const regex = new RegExp(filterBy.authors, 'i')
+      books = books.filter((book) => regex.test(book.authors))
+    }
+
     return books
   })
 }
@@ -112,9 +118,14 @@ function getFilterBy() {
 }
 
 function setFilterBy(filterBy = {}) {
-  if (filterBy.txt !== undefined) gFilterBy.txt = filterBy.txt
-  if (filterBy.minSpeed !== undefined) gFilterBy.minSpeed = filterBy.minSpeed
+  if (filterBy.title !== undefined) gFilterBy.title = filterBy.title
+  if (filterBy.amount !== undefined) gFilterBy.amount = filterBy.amount
+  if (filterBy.authors !== undefined) gFilterBy.authors = filterBy.authors
   return gFilterBy
+}
+
+function getDefaultFilter() {
+  return { title: '', amount: '', authors: '' }
 }
 
 function getNextBookId(bookId) {
