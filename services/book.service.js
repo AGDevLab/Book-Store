@@ -31,7 +31,7 @@ const gBooks = [
       'aliquam pretium lorem laoreet etiam odio cubilia iaculis placerat aliquam tempor nisl auctor',
     pageCount: 129,
     categories: ['Computers', 'Hack'],
-    thumbnail: 'assets/img/14.jpg',
+    thumbnail: './assets/img/14.jpg',
     language: 'sp',
     listPrice: {
       amount: 44,
@@ -49,7 +49,7 @@ const gBooks = [
       'lorem molestie ut euismod ad quis mi ultricies nisl cursus suspendisse dui tempor sit suscipit metus etiam euismod tortor sagittis habitant',
     pageCount: 972,
     categories: ['Computers', 'Hack'],
-    thumbnail: '../assets/img/2.jpg',
+    thumbnail: './assets/img/2.jpg',
     language: 'he',
     listPrice: {
       amount: 108,
