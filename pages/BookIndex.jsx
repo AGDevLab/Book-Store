@@ -52,7 +52,9 @@ export function BookIndex() {
       {!selectedBookId && (
         <React.Fragment>
           <h2>bookIndex</h2>
-          <BookFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+          <div className='debug'>
+            <BookFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+          </div>
 
           <BookList
             books={books}

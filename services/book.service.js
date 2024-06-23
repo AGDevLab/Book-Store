@@ -75,7 +75,7 @@ export const bookService = {
   getDefaultFilter,
 }
 
-function query(filterBy) {
+function query(filterBy = {}) {
   return storageService.query(BOOK_KEY).then((books) => {
     if (filterBy.title) {
       const regex = new RegExp(filterBy.title, 'i')
@@ -92,6 +92,42 @@ function query(filterBy) {
     return books
   })
 }
+
+// async function query(filterBy = {}) {
+//   let books = await storageService.query(BOOK_KEY)
+
+//   if (filterBy.title) {
+//     const regex = new RegExp(filterBy.title, 'i')
+//     books = books.filter((book) => regex.test(book.title))
+//   }
+//   if (filterBy.amount) {
+//     books = books.filter((book) => book.listPrice.amount >= filterBy.amount)
+//   }
+//   if (filterBy.authors) {
+//     const regex = new RegExp(filterBy.authors, 'i')
+//     books = books.filter((book) => regex.test(book.authors))
+//   }
+
+//   return books
+// }
+
+// function query(filterBy = {}) {
+//   return storageService.query(BOOK_KEY).then((books) => {
+//     if (filterBy.title) {
+//       const regex = new RegExp(filterBy.title, 'i')
+//       books = books.filter((book) => regex.test(book.title))
+//     }
+//     if (filterBy.amount) {
+//       books = books.filter((book) => book.listPrice.amount >= filterBy.amount)
+//     }
+//     if (filterBy.authors) {
+//       const regex = new RegExp(filterBy.authors, 'i')
+//       books = books.filter((book) => regex.test(book.authors))
+//     }
+
+//     return books
+//   })
+// }
 
 function get(bookId) {
   return storageService.get(BOOK_KEY, bookId)

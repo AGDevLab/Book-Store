@@ -6,6 +6,7 @@ export function BookFilter({ filterBy, onSetFilter }) {
   function handleChange() {}
 
   function handleTitleChange({ target }) {
+    console.log(filterByToEdit)
     const { value } = target
     console.log(value)
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, title: value }))
@@ -16,8 +17,8 @@ export function BookFilter({ filterBy, onSetFilter }) {
 
   function onSubmitFilter(ev) {
     ev.preventDefault()
-    console.log('filterByToEdit', filterByToEdit)
     onSetFilter(filterByToEdit)
+    console.log('filterByToEdit', filterByToEdit)
   }
 
   const { title, amount, authors } = filterByToEdit
