@@ -5,8 +5,8 @@ export function BookPreview({ book }) {
 
   return (
     <article className='book-preview'>
-      <img src={thumbnail} alt='' />
       <h2>Title: {title}</h2>
+      <img src={thumbnail} alt='' />
       <h4>Authors: {authors}</h4>
       <h4>Price: {listPrice.amount}</h4>
     </article>
