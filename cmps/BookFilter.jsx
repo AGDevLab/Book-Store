@@ -1,14 +1,22 @@
-const { useState } = React
+const { useState, useEffect } = React
 
 export function BookFilter({ filterBy, onSetFilter }) {
   const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
 
-  function handleChange() {}
+  useEffect(() => {
+    onSetFilter(filterByToEdit)
+  }, [filterByToEdit])
+
+  function handleChange({ target }) {
+    // console.log(target)
+    const { value, name: field } = target
+    setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
+  }
 
   function handleTitleChange({ target }) {
-    console.log(filterByToEdit)
+    // console.log(filterByToEdit)
     const { value } = target
-    console.log(value)
+    // console.log(value)
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, title: value }))
   }
 
@@ -18,7 +26,7 @@ export function BookFilter({ filterBy, onSetFilter }) {
   function onSubmitFilter(ev) {
     ev.preventDefault()
     onSetFilter(filterByToEdit)
-    console.log('filterByToEdit', filterByToEdit)
+    // console.log('filterByToEdit', filterByToEdit)
   }
 
   const { title, amount, authors } = filterByToEdit
@@ -30,15 +38,27 @@ export function BookFilter({ filterBy, onSetFilter }) {
         <label htmlFor='title'>Book Title</label>
         <input
           value={title}
-          onChange={handleTitleChange}
+          onChange={handleChange}
           type='text'
           name='title'
           id='title'
         />
         <label htmlFor='authors'>Authors</label>
-        <input type='text' name='authors' id='authors' />
+        <input
+          value={authors}
+          onChange={handleChange}
+          type='text'
+          name='authors'
+          id='authors'
+        />
         <label htmlFor='amount'>amount</label>
-        <input type='numbers' name='amount' id='amount' />
+        <input
+          value={amount}
+          onChange={handleChange}
+          type='number'
+          name='amount'
+          id='amount'
+        />
         <button>Submit</button>
       </form>
     </section>
