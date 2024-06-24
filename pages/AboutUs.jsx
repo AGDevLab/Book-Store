@@ -4,7 +4,7 @@ export function AboutUs() {
   console.log('about')
   return (
     <section>
-      <h2>aboutUs</h2>
+      <h2>aboutUs Page</h2>
       {/* <UserPreview /> */}
     </section>
   )
