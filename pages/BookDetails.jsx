@@ -1,15 +1,22 @@
+const { useParams, Link } = ReactRouterDOM
+
 import { bookService } from '../services/book.service.js'
 
 const { useEffect, useState } = React
 
-export function BookDetails({ bookId, onBack }) {
+// export function BookDetails({ bookId, onBack }) {
+export function BookDetails() {
   const [book, setBook] = useState(null)
 
+  const { bookId } = useParams()
+
   useEffect(() => {
+    console.log(bookId)
     bookService.get(bookId).then((book) => setBook(book))
   }, [])
 
   // const { title, authors } = book
+
   if (!book) return <div>Book Loading...</div>
   return (
     <React.Fragment>
@@ -21,7 +28,10 @@ export function BookDetails({ bookId, onBack }) {
         <h5>pagecount: {book.pageCount}</h5>
         <p>Book Description: {book.description}</p>
       </section>
-      <button onClick={onBack}>back</button>
+      <button>
+        <Link to='/BookIndex'>Back</Link>
+      </button>
+      {/* <button onClick={onBack}>back</button> */}
     </React.Fragment>
   )
 }
