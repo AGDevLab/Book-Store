@@ -8,10 +8,28 @@ export function BookFilter({ filterBy, onSetFilter }) {
   }, [filterByToEdit])
 
   function handleChange({ target }) {
-    // console.log(target)
-    const { value, name: field } = target
+    const field = target.name
+    let value = target.value
+
+    switch (target.type) {
+      case 'number':
+      case 'range':
+        value = +value
+        break
+      case 'checkbox':
+        value = target.checked
+        break
+
+      default:
+        break
+    }
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
   }
+  // function handleChange({ target }) {
+  //   // console.log(target)
+  //   const { value, name: field } = target
+  //   setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
+  // }
 
   function handleTitleChange({ target }) {
     // console.log(filterByToEdit)

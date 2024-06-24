@@ -68,7 +68,7 @@ export const bookService = {
   get,
   remove,
   save,
-  getEmptyCar,
+  getEmptyBook: getEmptyBook,
   getNextCarId: getNextBookId,
   getFilterBy,
   setFilterBy,
@@ -145,8 +145,15 @@ function save(book) {
   }
 }
 
-function getEmptyCar(vendor = '', maxSpeed = 0) {
-  return { id: '', vendor, maxSpeed }
+function getEmptyBook(title = '', amount = 0) {
+  // return { id: '', vendor, maxSpeed }
+  return {
+    id: '',
+    title,
+    authors: 'Not An Author',
+    amount,
+    thumbnail: './assets/img/returnnull.jpg',
+  }
 }
 
 function getFilterBy() {

@@ -6,6 +6,7 @@ import { Home } from './pages/Home.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
 import { BookIndex } from './pages/BookIndex.jsx'
 import { BookDetails } from './pages/BookDetails.jsx'
+import { BookEdit } from './pages/BookEdit.jsx'
 
 const { useState } = React
 
@@ -23,6 +24,7 @@ export function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/aboutus' element={<AboutUs />} />
             <Route path='/BookIndex' element={<BookIndex />} />
+            <Route path='/BookIndex/BookEdit' element={<BookEdit />} />
             <Route path='/BookIndex/:bookId' element={<BookDetails />} />
             <Route path='/' element={<Navigate to='/BookIndex' />} />
           </Routes>

@@ -29,7 +29,7 @@ export function BookDetails() {
         <p>Book Description: {book.description}</p>
       </section>
       <button>
-        <Link to='/BookIndex'>Back</Link>
+        <Link to='/home'>Back</Link>
       </button>
       {/* <button onClick={onBack}>back</button> */}
     </React.Fragment>
