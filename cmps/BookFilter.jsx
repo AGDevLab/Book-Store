@@ -71,7 +71,7 @@ export function BookFilter({ filterBy, onSetFilter }) {
         />
         <label htmlFor='amount'>amount</label>
         <input
-          value={amount}
+          value={amount || ''}
           onChange={handleChange}
           type='number'
           name='amount'
