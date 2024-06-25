@@ -5,7 +5,7 @@ import { bookService } from '../services/book.service.js'
 import { BookList } from '../cmps/BookList.jsx'
 import { BookFilter } from '../cmps/BookFilter.jsx'
 import { BookDetails } from '../pages/BookDetails.jsx'
-
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 const { useState, useEffect } = React
 
 export function BookIndex() {
@@ -34,8 +34,12 @@ export function BookIndex() {
         // console.log(books)
         // loadBooks()
         setBooks((books) => books.filter((book) => book.id !== bookId))
+        showSuccessMsg('Book removed successfully')
       })
-      .catch((err) => console.log('err ', err))
+      .catch(
+        (err) => console.log('err ', err),
+        showErrorMsg('Cannot remove book')
+      )
   }
 
   function onSelectBookId(book) {
